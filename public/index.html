@@ -1,12 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Demo</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo</title>
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script>
+      const state = {
+        time: new Date(),
+        lots: [
+          {
+            id: 1,
+            name: "Apple",
+            description: "Apple description",
+            price: 16,
+          },
+          {
+            id: 2,
+            name: "Orange",
+            description: "Orange description",
+            price: 41,
+          },
+        ],
+      };
+
+      // ############################
+
+      function App(state) {
+        const node = document.createElement("div");
+        node.classList.add("app");
+
+        node.append(Header());
+        node.append(Clock({ time: state.time }));
+        node.append(Lots({ lots: state.lots }));
+
+        return node;
+      }
+
+      function Header() {
+        const header = document.createElement("header");
+        header.classList.add("header");
+
+        header.append(Logo());
+
+        return header;
+      }
+
+      function Logo() {
+        const logo = document.createElement("img");
+
+        logo.classList.add("logo");
+        logo.src =
+          "https://cdn.pixabay.com/photo/2021/05/10/10/46/yellow-wall-6243164__340.jpg";
+
+        return logo;
+      }
+
+      function Clock({ time }) {
+        const clock = document.createElement("div");
+        clock.classList.add("clock");
+        clock.innerText = time.toLocaleTimeString();
+
+        return clock;
+      }
+
+      function Lots({ lots }) {
+        const list = document.createElement("div");
+        list.classList.add("lots");
+
+        lots.forEach((lot) => list.append(Lot(lot)));
+
+        return list;
+      }
+
+      function Lot({ price, name, description }) {
+        const item = document.createElement("article");
+        item.classList.add("lot");
+
+        const cost = document.createElement("div");
+        cost.classList.add("log__price");
+        cost.innerText = price;
+
+        const title = document.createElement("h2");
+        title.classList.add("lot__name");
+        title.innerText = name;
+
+        const text = document.createElement("p");
+        text.classList.add("lot__description");
+        text.innerText = description;
+
+        item.append(cost);
+        item.append(title);
+        item.append(text);
+
+        return item;
+      }
+
+      // ############################
+
+      render(App(state), document.getElementById("root"));
+
+      // ############################
+
+      function render(newDom, realDomElement) {
+        realDomElement.append(newDom);
+      }
+
+      // ############################
+    </script>
+  </body>
 </html>

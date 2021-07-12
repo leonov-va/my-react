@@ -1,0 +1,20 @@
+.app {
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+.logo {
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.clock {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.lot {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid;
+}
