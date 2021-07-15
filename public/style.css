@@ -9,8 +9,25 @@
 }
 
 .clock {
+  display: flex;
+  align-items: center;
   margin-bottom: 20px;
   font-size: 22px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  border-radius: 50%;
+}
+
+.icon.day {
+  background-color: orange;
+}
+
+.icon.night {
+  background-color: blue;
 }
 
 .lot {
