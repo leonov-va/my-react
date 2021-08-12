@@ -334,7 +334,7 @@
           if (
             virtual !== undefined &&
             real !== undefined &&
-            (virtual.tagName || '') === (real.tagName || '').toLowerCase()
+            (virtual.type || '') === (real.tagName || '').toLowerCase()
           ) {
             sync(virtual, real);
           }
@@ -343,7 +343,7 @@
           if (
             virtual !== undefined &&
             real !== undefined &&
-            (virtual.tagName || '') !== (real.tagName || '').toLowerCase()
+            (virtual.type || '') !== (real.tagName || '').toLowerCase()
           ) {
             const newReal = createRealNodeByVirtual(virtual);
             sync(virtual, newReal);
