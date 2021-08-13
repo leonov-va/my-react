@@ -74,7 +74,6 @@
             children: [
               {
                 type: Header,
-                props: {},
               },
               {
                 type: Clock,
@@ -96,7 +95,7 @@
             className: "header",
             children: [
               {
-                type: Logo(),
+                type: Logo,
               },
             ],
           },
@@ -108,7 +107,7 @@
           type: "img",
           props: {
             className: "logo",
-            src: "https://cdn.pixabay.com/photo/2021/05/10/10/46/yellow-wall-6243164__340.jpg",
+            src: "./images/classes.jpg",
           },
         };
       }
@@ -290,7 +289,6 @@
 
       function sync(virtualNode, realNode) {
         // Sync element
-
         if (virtualNode.props) {
           Object.entries(virtualNode.props).forEach(([name, value]) => {
             if (name === 'children' && name === 'key') {
@@ -334,7 +332,7 @@
           if (
             virtual !== undefined &&
             real !== undefined &&
-            (virtual.tagName || '') === (real.tagName || '').toLowerCase()
+            (virtual.type || '') === (real.tagName || '').toLowerCase()
           ) {
             sync(virtual, real);
           }
@@ -343,7 +341,7 @@
           if (
             virtual !== undefined &&
             real !== undefined &&
-            (virtual.tagName || '') !== (real.tagName || '').toLowerCase()
+            (virtual.type || '') !== (real.tagName || '').toLowerCase()
           ) {
             const newReal = createRealNodeByVirtual(virtual);
             sync(virtual, newReal);
